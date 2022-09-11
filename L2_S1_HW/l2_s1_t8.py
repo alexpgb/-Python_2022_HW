@@ -10,7 +10,7 @@ import random
 
 file_content = ''
 with open('./L2_S1_HW/fish_text.txt', 'r', encoding="utf8") as f:
-    for l in f.readline():
+    for l in f:
         file_content = file_content + l
     f.close
 file_content_split = file_content.split(' ')
@@ -18,14 +18,15 @@ for i in range(20):
     s = random.randint(1,999)
     el_num = random.randint(0,len(file_content_split)-1)
     file_content_split[el_num] = s
-# print(file_content_split)
-ss = input('Укажите искомую строку :')
-n = 0
-for i  in range(len(file_content_split)):
-    if file_content_split[i] is str and file_content_split[i].find(ss) != -1:
-        n += 1
-        if n >= 2:
-            print(f'I am find it in {file_content_split[i]} element index {i}! )')
-            break
-if n < 2:
-    print(f'I am cannot find it (. -1')
+print(file_content_split)
+while True:
+    ss = input('Укажите искомую строку (Ctrl-C - выход) :')
+    n = 0
+    for i  in range(len(file_content_split)):
+        if isinstance(file_content_split[i], str) and file_content_split[i].find(ss) != -1:            
+            n += 1
+            if n >= 2:
+                print(f'I am find it in {file_content_split[i]} element index {i}! )')
+                break        
+    if n < 2:
+        print(f'I am cannot find it (. -1 {n}')

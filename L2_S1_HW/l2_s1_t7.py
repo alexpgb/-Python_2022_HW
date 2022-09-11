@@ -26,7 +26,7 @@ for file_content_split_item in file_content_split:
     if file_content_split_item.find(ss) != -1:
         # break
         pass
-        print(f'I am find it in {file_content_split_item}!')
+print(f'I am find! it in {file_content_split_item}!')
 
 
 
