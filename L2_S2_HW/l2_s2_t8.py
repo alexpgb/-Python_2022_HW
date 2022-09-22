@@ -4,12 +4,6 @@
 # from l2_s2_t7 import polinom_from_dict_as_str
 import l2_s2_t7 as l2
 
-p_a = []
-p1 = '-  38x**4 +  41x**3 -  20x**2 +  40x**1 +  12 = 0'
-{0: (1, 12), 1: (1, 40), 2: (-1, 20), 3: (1, 41), 4: (-1, 38)}
-p2 = '+  16x**6 +  2x**5 +  21x**4 +  5x**3 -  16x**1 -  26 = 0'
-p3 = '+  16x**6 +  2x**5 +  21x**4 +  5x**3 -  16x -  26 = 0'
-{0: (-1, 26), 1: (-1, 16), 2: (1, 0), 3: (1, 5), 4: (1, 21), 5: (1, 2), 6: (1, 16)}
 
 def parse_polynom_as_str(p):
     r = {}
@@ -66,10 +60,29 @@ def polinoms_sum(polynom_as_dict1, polynom_as_dict2):
             r[i] = 1 if s >= 0 else -1, abs(s)
     return(r)
 
+
+f1_source = './L2_S2_HW/p1_source.txt'
+f2_source = './L2_S2_HW/p2_source.txt'
+f_result = './L2_S2_HW/p_result.txt'
+p_a = []
+p1 = '' #'-  38x**4 +  41x**3 -  20x**2 +  40x**1 +  12 = 0'
+#{0: (1, 12), 1: (1, 40), 2: (-1, 20), 3: (1, 41), 4: (-1, 38)}
+p2 = '' #'+  16x**6 +  2x**5 +  21x**4 +  5x**3 -  16x**1 -  26 = 0'
+#p3 = '+  16x**6 +  2x**5 +  21x**4 +  5x**3 -  16x -  26 = 0'
+#{0: (-1, 26), 1: (-1, 16), 2: (1, 0), 3: (1, 5), 4: (1, 21), 5: (1, 2), 6: (1, 16)}
+
+with open(f1_source, 'r') as f:
+    p1 = f.readline()
+print(f'Многочлен 1 {p1}')
+with open(f2_source, 'r') as f:
+    p2 = f.readline()
+print(f'Многочлен 1 {p1}')
 p_a.append(parse_polynom_as_str(p1))
 p_a.append(parse_polynom_as_str(p2))
-# сложение многочленов
+print('Cложение многочленов:')
 result_polinom_as_dict = polinoms_sum(p_a[0], p_a[1])
 result_polinom_as_str = l2.polinom_from_dict_as_str(result_polinom_as_dict)
 print('\n'.join([p1, '+', p2, '-' * 20]))
-print(result_polinom_as_str)
+with open(f_result, 'w') as f:
+    f.write(result_polinom_as_str)
+print(f'Результат сохранен в файл {f_result}')
