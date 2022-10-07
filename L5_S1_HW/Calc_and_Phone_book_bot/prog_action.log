@@ -1,0 +1,7 @@
+prog_action 2022-10-07 16:27:21,716 INFO Модуль __main__. Старт работы программы.
+prog_action 2022-10-07 16:27:21,724 INFO Сервер запущен
+prog_action 2022-10-07 16:35:20,464 ERROR Modulephone_book_bot.phone_book_bot.model_pb: table PHONE_BOOKS has no column named firstame
+Traceback (most recent call last):
+  File "c:\Users\Alex\Documents\GB\Python_2022\L5_S1_HW\Calc_and_Phone_book_bot\phone_book_bot\model_pb.py", line 66, in save_item_to_bd
+    cursor.execute(sql_statment_insert, tuple(el for el in item_as_dict.values()))
+sqlite3.OperationalError: table PHONE_BOOKS has no column named firstame
